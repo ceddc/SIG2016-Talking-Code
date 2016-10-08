@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="description" content="Esri France Talking code SIG 2016 - ArcGIS JS API 4.1">
+	<meta name="author" content="Esri france">
+	<link rel="icon" href="http://www.esri.com/favicon.ico">
+	<title>Esri France Talking code SIG 2016 - ArcGIS JS API 4.x</title>
+
+	<!-- Calcite Bootstrap -->
+  <link rel="stylesheet" href="http://esri.github.com/calcite-maps/dist/css/calcite-bootstrap.min-v0.2.css">
+
+  <!-- Calcite Maps -->
+  <link rel="stylesheet" href="http://esri.github.com/calcite-maps/dist/css/calcite-maps-arcgis-4.x.min-v0.2.css">
+  
+
+	<!-- ArcGIS JS 4.0 -->
+	<link rel="stylesheet" href="http://js.arcgis.com/4.0/esri/css/main.css">
+
+	<!-- Prettify Code -->
+	<!--<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?&amp;skin=sunburst"></script>-->
+
+	<!-- Main -->
+	<link rel="stylesheet" href="../css/3D.css">
+</head>
+
+<body class="calcite-nav-top">
+
+	<!-- Navbar -->
+	<nav class="navbar calcite-navbar navbar-fixed-top calcite-text-light calcite-bgcolor-off-black">
+
+		<!-- Menu -->
+		<div class="dropdown calcite-dropdown calcite-text-dark calcite-bg-light" role="presentation">
+			<a class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false">
+				<div class="calcite-dropdown-toggle">
+					<span class="sr-only">Toggle dropdown menu</span>
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+			</a>
+			<ul class="dropdown-menu">
+				<li><a role="button" data-target="#panelBasemaps" aria-haspopup="true"><span class="glyphicon glyphicon-th-large"></span> Fonds de plan</a></li>
+			</ul>
+		</div>
+		<!-- Title -->
+		<div class="calcite-title calcite-overflow-hidden">
+			<div class="calcite-title-main">Esri France Talking code 2016</div>
+			<div class="calcite-title-divider hidden-xs"></div>
+			<div class="calcite-title-sub hidden-xs">ArcGIS JS API 4.x</div>
+		</div>
+		<!-- Nav -->
+		<ul class="nav navbar-nav calcite-nav">
+			<li id="mapTab" class="active">
+				<a id="mapNav" class="hidden-xs" href="#2dTab" aria-controls="2Dtab" aria-expanded="true" role="tab" data-toggle="tab" data-tooltip="tip" title="2D View" data-placement="bottom"><span class="glyphicon glyphicon-picture"></span> Carte</a>
+				</li>
+			<li id="sceneTab">				
+				<a id="sceneNav" class="hidden-xs" href="#3dTab" aria-controls="3Dtab" role="tab" data-toggle="tab" data-tooltip="tip" title="3D View" data-placement="bottom"><span class="glyphicon glyphicon-globe"></span> Scène</a>
+				</li>
+			<li>
+				<div class="calcite-navbar-search calcite-search-expander">
+					<div id="searchWidgetDiv"></div>
+				</div>
+			</li>
+		</ul>
+	</nav>
+	<!--/.calcite-navbar -->
+
+	<!-- Map  -->
+	<div class="calcite-map calcite-map-absolute">
+		<div id="tabContainer" class="tab-content">
+			<div id="2dTab" class="tab-pane fade in active" role="tabpanel">
+				<div id="mapViewDiv"></div>
+			</div>
+			<div id="3dTab" class="tab-pane fade" role="tabpanel">
+				<div id="sceneViewDiv"></div>
+			</div>
+		</div>
+	</div>
+	<!-- /.calcite-map -->
+
+	<!-- Panels -->
+	<div class="calcite-panels calcite-panels-right calcite-text-light calcite-bg-dark calcite-bgcolor-black panel-group">
+
+		<!-- Basemaps Panel -->
+
+		<div id="panelBasemaps" class="panel collapse">
+			<div id="headingBasemaps" class="panel-heading" role="tab">
+				<div class="panel-title">
+					<a class="panel-toggle collapsed" role="button" data-toggle="collapse" href="#collapseBasemaps" aria-expanded="false" aria-controls="collapseBasemaps"><span class="glyphicon glyphicon-th-large" aria-hidden="true"></span><span class="panel-label">Fonds de plan</span></a>
+					<a class="panel-close" role="button" data-toggle="collapse" data-target="#panelBasemaps"><span class="esri-icon esri-icon-close" aria-hidden="true"></span></a>
+				</div>
+			</div>
+			<div id="collapseBasemaps" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingBasemaps">
+				<div class="panel-body">
+					<select id="selectBasemapPanel" class="form-control">
+						<option value="streets" data-vector="streets-vector">Streets</option>
+						<option value="satellite" data-vector="satellite" selected="">Satellite</option>
+						<option value="hybrid" data-vector="hybrid">Hybrid</option>
+						<option value="national-geographic" data-vector="national-geographic">National Geographic</option>
+						<option value="topo" data-vector="topo-vector">Topographic</option>
+						<option value="gray" data-vector="gray-vector">Gris</option>
+						<option value="dark-gray" data-vector="dark-gray-vector">Gris Foncé</option>
+						<option value="osm" data-vector="osm">Open Street Map</option>
+						<option value="dark-gray" data-vector="streets-night-vector">Streets Night</option>
+						<option value="streets" data-vector="streets-navigation-vector">Streets Mobile</option>
+					</select>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<!-- /.panel-group -->
+
+
+	<!-- Calcite Maps and Bootstrap -->
+	<script type="text/javascript">
+		var app; // Global so we can play with it in the console
+
+		var dojoConfig = {
+			packages: [{
+					name: "bootstrap",
+					location: "https://esri.github.io/calcite-maps/dist/vendor/dojo-bootstrap"
+      		},
+				{
+					name: "calcite-maps",
+					location: "https://esri.github.io/calcite-maps/dist/js/dojo"
+			}]
+		};
+	</script>
+
+	<!-- ArcGIS JS 4.0 -->
+	<script src="http://js.arcgis.com/4.0/"></script>
+
+	<!-- MAIN JS -->
+	<script src="js/3D.js"></script>
+</body>

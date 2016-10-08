@@ -1,0 +1,58 @@
+<div>
+	<!-- Nav tabs -->
+	<div class="jimu-r-row">
+			<ul class="nav nav-tabs" role="tablist">
+				<li class="active"><a href="#buttons" role="tab" data-toggle="tab">${nls.timing}</a></li>
+				<li><a href="#icons" role="tab" data-toggle="tab">${nls.shadowing}</a></li>
+			</ul>
+			<!-- Tab panes -->
+			<div class="tab-content">
+				<div class="tab-pane active" id="buttons">
+					<div class="jimu-r-row">
+						<div class="col-3-3">
+							<div>${nls.dateText}</div>
+						</div>
+					</div>
+
+					<div class="jimu-r-row">
+						<div class="col-3-3">
+							<div class="input-group">
+								<input class="form-control" data-dojo-attach-point="datePicker" id="datePicker" value="">
+								<span class="input-group-addon glyphicon glyphicon-calendar"></span>
+							</div>
+						</div>
+					</div>
+					<div class="jimu-r-row section">
+						<div class="col-3-3">
+							<div>${nls.dragSunSliderText}</div>
+						</div>
+					</div>
+					<div class="jimu-r-row">
+						<div class="col-1-2">
+							<div data-dojo-type="dijit/form/HorizontalSlider" data-dojo-attach-point="slider" data-dojo-props='intermediateChanges:true,showButtons:false,minimum:0,maximum:23.99' style="margin-top:10px;"></div>
+						</div>
+						<div class="col-1-2">
+							<div class="input-group">
+								<div class="form-control" data-dojo-attach-point="sunTime"></div>
+								<span class="input-group-addon glyphicon glyphicon-time"></span>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<div class="tab-pane" id="icons" data-dojo-attach-point="shadowContainer">
+					<div class="jimu-r-row">
+						<div class="col-3-3">
+							<div class="jimu-r-row" data-dojo-attach-point="directShadowSection">
+								<div data-dojo-type="jimu/dijit/CheckBox" data-dojo-attach-point="cbxDirect"></div>
+							</div>
+
+							<div class="jimu-r-row" data-dojo-attach-point="diffuseShadowSection">
+								<div data-dojo-type="jimu/dijit/CheckBox" data-dojo-attach-point="cbxDiffuse"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+</div>

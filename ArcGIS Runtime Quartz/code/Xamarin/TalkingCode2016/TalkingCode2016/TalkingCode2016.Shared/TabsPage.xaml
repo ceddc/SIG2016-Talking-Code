@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:TalkingCode2016;assembly=TalkingCode2016"
+             x:Class="TalkingCode2016.TabsPage"
+             x:Title="Techdays 2016">
+  
+  <local:Server Title="Server"/>
+  <local:Portal Title="Portal"/>
+  <local:Online3D Title="3D"/>
+
+</TabbedPage>

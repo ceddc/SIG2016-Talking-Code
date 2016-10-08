@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TalkingCode2016.Portal"
+             xmlns:esriUI="clr-namespace:Esri.ArcGISRuntime.Xamarin.Forms;assembly=Esri.ArcGISRuntime.Xamarin.Forms">
+  <StackLayout Spacing="0" x:Name="layout2D">
+    <!-- La carte -->
+    <esriUI:MapView x:Name="myView" VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand"/>
+
+    <!-- La barre de recherche -->
+    <Entry x:Name="searchBox" Grid.Column="0" Grid.Row="0" Completed="searchBox_Completed"  VerticalOptions="End" HorizontalOptions="FillAndExpand"></Entry>
+
+    <!-- La liste des cartes -->
+    <ListView x:Name="webmapsList" HeightRequest="200" Grid.Column="0" Grid.Row="1" ItemSelected="webmapsList_SelectionChanged" VerticalOptions="End" HorizontalOptions="FillAndExpand">
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ViewCell>
+            <StackLayout BackgroundColor="#eee"
+            Orientation="Vertical">
+              <StackLayout Orientation="Horizontal">
+                <Image Source="{Binding ThumbnailUri}" />
+                <Label Text="{Binding Title}"
+                TextColor="#f35e20" />
+              </StackLayout>
+            </StackLayout>
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+  </StackLayout>
+</ContentPage>

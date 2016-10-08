@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:esriUI="clr-namespace:Esri.ArcGISRuntime.Xamarin.Forms;assembly=Esri.ArcGISRuntime.Xamarin.Forms"
+             x:Class="TalkingCode2016.Server">
+  <StackLayout Spacing="0" x:Name="layout2D">
+    <!-- La carte -->
+    <esriUI:MapView x:Name="myView" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+
+    <!-- La Table -->
+    <TableView Intent="Form"  HeightRequest="200" VerticalOptions="End" HorizontalOptions="FillAndExpand" IsVisible="false" x:Name="AttributesForm">
+      
+      <TableRoot>
+        <TableSection  x:Name="attributeTitle">
+          <TextCell x:Name="LibVoie" Text="Libellé de la voie"></TextCell>
+          <TextCell x:Name="Abonnement" Text="Type"></TextCell>
+          <TextCell x:Name="QUARTIER" Text="Quartier"></TextCell>
+          <TextCell x:Name="SECTEUR" Text="Secteur"></TextCell>
+          <TextCell x:Name="ZONE_" Text="Zone"></TextCell>
+        </TableSection>
+      </TableRoot>
+    </TableView>
+
+  </StackLayout>
+    
+  
+</ContentPage>

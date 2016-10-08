@@ -1,0 +1,57 @@
+  html,
+  body,
+  #mapViewDiv #sceneViewDiv {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+  }
+  /* Style the code window */
+  
+
+  .calcite-panels .panel-body {
+    width: 350px;
+    max-height: 700px;
+    padding: 10px;
+  }
+  
+  @media (max-width: 768px) {
+    .calcite-panels .panel-body {
+      width: 100%;
+      max-height: 250px;
+    }
+  }
+  
+.esri-slides {
+      /*position: absolute;*/
+      /*z-index: 50;*/
+      /*top: 40px;*/
+      /*right: 0px;*/
+      background-color: black;
+      opacity: 0.7;
+      color: snow;
+      padding: 10px;
+      border-radius: 10px;
+      /*visibility: hidden;*/
+      bottom: 20px;
+      /*overflow-y: scroll;*/
+    }
+    
+   .esri-slides .slide {
+      /* Show cursor as pointer when on a slide */
+      cursor: pointer;
+      margin-bottom: 6px;
+    }
+    
+   .esri-slides .slide .title {
+      /* Center the title text */
+      text-align: center;
+    }
+    /* Draw active slide with a nice border around the thumbnail */
+    
+   .esri-slides .slide.active img {
+      box-shadow: 0px 0px 12px #ffffff;
+      border-style: solid;
+      border-width: thin;
+      border-color: white;
+    }
